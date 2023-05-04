@@ -3,7 +3,6 @@ import './ProductsSection.css'
 import { Product } from "../Product/Product";
 
 export const ProductsSection = () => {
-  // const [isVeteran, setIsVeteran] = useState(false)
   const [products, setProducts] = useState([])
   
   const fetchProducts = async () => {
