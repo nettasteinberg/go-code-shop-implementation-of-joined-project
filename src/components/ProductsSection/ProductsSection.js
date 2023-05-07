@@ -21,7 +21,7 @@ export const ProductsSection = ({setCategories, filterByValue}) => {
     console.log("Categories:", categories);
     setCategories(categories);
   }, [products, setCategories])
-  
+
   return (
     <section className="products">
       {products.filter(filterByValue === "None" ? p => true : p => p.category === filterByValue).map((p) => <Product src={p.image} title={p.title} price={p.price}/>)}
