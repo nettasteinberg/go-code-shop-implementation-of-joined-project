@@ -8,7 +8,7 @@ export const Product = ({src, title, price}) => {
         </div>
         <div className="product-info">
           <h5>{title}</h5>
-          <h6>{price}</h6>
+          <h6>{price}$</h6>
         </div>
       </div>
     );

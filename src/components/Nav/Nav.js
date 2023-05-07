@@ -1,13 +1,13 @@
 import './Nav.css'
 import { FilterOrSort } from '../FilterOrSort/FilterOrSort';
-import { filterArrOptions, sortArrOptions } from '../../dummy-data/data';
-export const Nav = () => {
+import { sortArrOptions } from '../../dummy-data/data';
+export const Nav = ({categories, setFilterByValue, setSortByValue}) => {
   return (
     <nav className="product-filter">
       <h1>Jackets</h1>
       <div className="sort">
-        <FilterOrSort label={"Filter"} optionsArr={filterArrOptions}/>
-        <FilterOrSort label={"Sort"} optionsArr={sortArrOptions}/>
+        <FilterOrSort label={"Filter"} optionsArr={categories} setFilterByValue={setFilterByValue}/>
+        <FilterOrSort label={"Sort"} optionsArr={sortArrOptions} setSortByValue={setSortByValue}/>
       </div>
     </nav>
   );
