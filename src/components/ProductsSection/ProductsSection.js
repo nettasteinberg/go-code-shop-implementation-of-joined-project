@@ -20,7 +20,7 @@ export const ProductsSection = ({setCategories, filterByValue}) => {
     const categories = products.map(p => p.category).filter((value, index, array) => array.indexOf(value)===index);
     console.log("Categories:", categories);
     setCategories(categories);
-  }, [products])
+  }, [products, setCategories])
   
   return (
     <section className="products">
