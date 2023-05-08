@@ -1,3 +1,8 @@
+# Description of this project
+
+The purpose of this project is to practice React in steps.
+Step 1: using the [code for a shop](https://codepen.io/levinmejia/pen/zrddrv), create a react app that will look identical.
+Step 2: utilizing useState and useEffect hooks and props to filter products taken from [https://fakestoreapi.com/products](https://fakestoreapi.com/products).
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
