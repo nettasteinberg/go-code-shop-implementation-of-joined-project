@@ -4,7 +4,7 @@ import { sortArrOptions } from '../../dummy-data/data';
 export const Nav = () => {
   return (
     <nav className="product-filter">
-      <h1>Jackets</h1>
+      <h1>Top Shop</h1>
       <div className="sort">
         <FilterOrSort label={"Filter"}/>
         <FilterOrSort label={"Sort"} optionsArr={sortArrOptions}/>

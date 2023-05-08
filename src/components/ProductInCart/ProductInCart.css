@@ -1,6 +1,10 @@
 .productInCart {
     width: 23%;
-    height: 8rem;
+    height: 10rem;
     border: 1px solid black;
     margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
 }
