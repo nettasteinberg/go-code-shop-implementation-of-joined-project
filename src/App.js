@@ -1,4 +1,5 @@
 import './App.css';
+import { MyContext } from './MyContext';
 import { Nav } from './components/Nav/Nav';
 import { ProductsSection } from './components/ProductsSection/ProductsSection';
 import {useState} from 'react'
@@ -9,10 +10,12 @@ function App() {
   const [sortByValue, setSortByValue] = useState("None");
 
   return (
-    <div className="App">
-     <Nav categories={categories} setFilterByValue={setFilterByValue} setSortByValue={setSortByValue}/>
-     <ProductsSection setCategories={setCategories} filterByValue={filterByValue} sortByValue={sortByValue}/>
-    </div>
+    <MyContext.Provider value={{categories, setCategories, filterByValue, setFilterByValue, setSortByValue}}>
+      <div className="App">
+        <Nav/>
+        <ProductsSection/>
+      </div>
+    </MyContext.Provider>
   );
 }
 

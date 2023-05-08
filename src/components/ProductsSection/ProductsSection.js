@@ -1,8 +1,10 @@
-import {useState, useEffect} from "react"
+import {useState, useEffect, useContext} from "react"
 import './ProductsSection.css'
 import { Product } from "../Product/Product";
+import { MyContext } from "../../MyContext";
 
-export const ProductsSection = ({setCategories, filterByValue}) => {
+export const ProductsSection = () => {
+  const {setCategories, filterByValue} = useContext(MyContext);
   const [products, setProducts] = useState([])
   
   const fetchProducts = async () => {
