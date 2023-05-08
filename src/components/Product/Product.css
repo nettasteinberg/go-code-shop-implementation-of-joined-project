@@ -19,6 +19,16 @@
     text-align: center;
 }
 
+.addSubtractProduct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addSubtractProduct > p {
+    margin: 0rem 0.5rem;
+}
+
 @media (max-width: 920px) {
     .product-card {
         flex: 1 21%;
