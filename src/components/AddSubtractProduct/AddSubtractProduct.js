@@ -11,7 +11,7 @@ export const AddSubtractProduct = ({title, price}) => {
             itemsInCart[title][0] = itemsInCart[title][0] - 1;
             setItemsInCart({...itemsInCart});
           } else {
-            delete itemsInCart[title]
+            delete itemsInCart[title];
             setItemsInCart({...itemsInCart}); 
           }
         }
