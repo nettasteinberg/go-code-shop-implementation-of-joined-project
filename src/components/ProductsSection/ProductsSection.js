@@ -4,12 +4,14 @@ import { Product } from "../Product/Product";
 import { MyContext } from "../../MyContext";
 
 export const ProductsSection = () => {
-  const {setCategories, filterByValue} = useContext(MyContext);
+  const {setCategories, filterByValue, setLoading} = useContext(MyContext);
   const [products, setProducts] = useState([])
   
   const fetchProducts = async () => {
+    setLoading(true);
     const response = await fetch("https://fakestoreapi.com/products");
     const data = await response.json();
+    setLoading(false);
     console.log("data", data);
     setProducts(data);
   }
