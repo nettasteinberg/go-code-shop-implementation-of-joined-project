@@ -4,7 +4,14 @@ import "./ProductInCart.css"
 import { AddSubtractProduct } from "../AddSubtractProduct/AddSubtractProduct";
 
 export const ProductInCart = ({product}) => {
-    const {itemsInCart} = useContext(MyContext);
+    const {itemsInCart, setItemsInCart} = useContext(MyContext);
+    
+    const removeFromCart = (product) => {
+        console.log(`removing product "${product}" from cart`);
+        delete itemsInCart[product];
+        setItemsInCart({...itemsInCart});
+    }
+    
     return (
         <div className="productInCart">
             <div>
@@ -13,8 +20,9 @@ export const ProductInCart = ({product}) => {
                 <p><span style={{ fontWeight: 'bold' }}>Product amount:</span> {itemsInCart[product][0]}</p>
                 <p><span style={{ fontWeight: 'bold' }}>Total price:</span> {itemsInCart[product][1] * itemsInCart[product][0]}$</p>
             </div>
-            <div>
+            <div className="adjustAmountInCart">
                 <AddSubtractProduct title={product} price={itemsInCart[product][1]}/>
+                <button onClick={() => removeFromCart(product)}>Remove</button>
             </div>
         </div>
     )

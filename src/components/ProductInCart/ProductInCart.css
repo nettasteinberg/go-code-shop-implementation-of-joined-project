@@ -8,3 +8,9 @@
     justify-content: space-between;
     padding-bottom: 0.5rem;
 }
+
+.adjustAmountInCart {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 5px;
+}
