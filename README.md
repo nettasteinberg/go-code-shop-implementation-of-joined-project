@@ -3,7 +3,7 @@
 The purpose of this project is to practice React step by step.\
 Step 1: using the [code for a shop](https://codepen.io/levinmejia/pen/zrddrv), create a react app that will look identical.\
 Step 2: utilizing useState and useEffect hooks and props to filter products taken from [https://fakestoreapi.com/products](https://fakestoreapi.com/products).\
-Step 3: adding a cart functionality, switching from props to using context wherever it is possible.\
+Step 3: adding a cart functionality, switching from props to using context wherever it is possible.
 
 # Getting Started with Create React App
 
