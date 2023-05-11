@@ -1,12 +1,17 @@
 .productInCart {
     width: 23%;
-    height: 10rem;
+    height: 6rem;
     border: 1px solid black;
     margin: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: 0.5rem;
+}
+
+.productInCart * > p {
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .adjustAmountInCart {
