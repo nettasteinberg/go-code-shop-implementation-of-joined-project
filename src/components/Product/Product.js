@@ -1,8 +1,13 @@
 import './Product.css'
-import { AddSubtractProduct } from '../AddSubtractProduct/AddSubtractProduct';
+import { Button } from '../Button/Button';
+import { useContext, useState } from 'react';
+import { MyContext } from '../../MyContext';
 
 export const Product = ({src, title, price}) => {  
   
+  const {incrementProduct, decrementProduct, addToCart} = useContext(MyContext);
+  const [count, setCount] = useState(0);
+
   return (
     <div className="product-card">
       <div className="product-image">
@@ -12,8 +17,12 @@ export const Product = ({src, title, price}) => {
         <h5>{title}</h5>
         <h6>{price}$</h6>
       </div>
-      <AddSubtractProduct title={title} price={price}/>
+      <div className="addToCartContainer">
+          <Button onClick={() => decrementProduct(setCount)} text={"-"} />
+          <p>{count}</p>
+          <Button onClick={() => incrementProduct(setCount)} text={"+"} />
+      </div>
+      <Button onClick={() => addToCart(title, count, price, setCount)} text={"ADD TO CART"} />
     </div>
   );
 };
-
