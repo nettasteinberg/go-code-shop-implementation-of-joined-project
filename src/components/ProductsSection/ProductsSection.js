@@ -1,34 +1,15 @@
-import {useState, useEffect, useContext} from "react"
 import './ProductsSection.css'
+import {useContext} from "react"
 import { Product } from "../Product/Product";
 import { MyContext } from "../../MyContext";
 
 export const ProductsSection = () => {
-  const {setCategories, filterByValue, setLoading} = useContext(MyContext);
-  const [products, setProducts] = useState([])
-  
-  const fetchProducts = async () => {
-    setLoading(true);
-    const response = await fetch("https://fakestoreapi.com/products");
-    const data = await response.json();
-    setLoading(false);
-    console.log("data", data);
-    setProducts(data);
-  }
-  
-  useEffect(() => {
-    fetchProducts();
-  },[]) 
-  
-  useEffect(() => {
-    const categories = products.map(p => p.category).filter((value, index, array) => array.indexOf(value)===index);
-    console.log("Categories:", categories);
-    setCategories(categories);
-  }, [products, setCategories])
+  const {products, filterByValue} = useContext(MyContext);
 
   return (
     <section className="products">
-      {products.filter(filterByValue === "None" ? p => true : p => p.category === filterByValue).map((p) => <Product src={p.image} title={p.title} price={p.price}/>)}
+      {console.log("Filter value: ", filterByValue)};
+      {products.filter(filterByValue === "All Products" ? p => true : p => p.category === filterByValue).map((p) => <Product src={p.image} title={p.title} price={p.price}/>)}
     </section>
   );
 };

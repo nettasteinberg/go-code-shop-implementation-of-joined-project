@@ -1,5 +1,5 @@
-import { useContext } from "react";
 import "./FilterOrSort.css";
+import { useContext } from "react";
 import { MyContext } from "../../MyContext";
 
 export const FilterOrSort = ({label, optionsArr}) => {
@@ -7,7 +7,7 @@ export const FilterOrSort = ({label, optionsArr}) => {
     if (label === "Filter") {
         optionsArr = categories;
     }
-    optionsArr = ["None", ...optionsArr];
+    optionsArr = ["All Products", ...optionsArr];
 
     return (
         <div className="collection-sort">

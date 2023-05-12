@@ -1,6 +1,6 @@
+import "./ProductInCart.css"
 import { useContext } from "react"
 import { MyContext } from "../../MyContext"
-import "./ProductInCart.css"
 import { AddSubtractProduct } from "../AddSubtractProduct/AddSubtractProduct";
 
 export const ProductInCart = ({product}) => {

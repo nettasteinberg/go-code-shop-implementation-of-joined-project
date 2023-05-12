@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
 import "./LoadingSpinner.css";
+import { useContext, useEffect } from "react";
 import { MyContext } from "../../MyContext";
 
 export const LoadingSpinner = () => {

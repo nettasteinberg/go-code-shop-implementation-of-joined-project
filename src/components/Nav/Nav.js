@@ -1,6 +1,7 @@
 import './Nav.css'
 import { FilterOrSort } from '../FilterOrSort/FilterOrSort';
 import { sortArrOptions } from '../../dummy-data/data';
+
 export const Nav = () => {
   return (
     <nav className="product-filter">
