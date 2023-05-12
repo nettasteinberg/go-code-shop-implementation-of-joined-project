@@ -15,7 +15,7 @@ export const ProductInCart = ({product}) => {
 
     const subtract = () => {
         if (itemsInCart[product][0] === 1) {
-            delete itemsInCart[product];
+            return;
         } else {
             itemsInCart[product][0] -= 1;
         }

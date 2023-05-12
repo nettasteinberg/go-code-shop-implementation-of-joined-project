@@ -1,13 +1,6 @@
 import "./LoadingSpinner.css";
-import { useContext, useEffect } from "react";
-import { MyContext } from "../../MyContext";
 
 export const LoadingSpinner = () => {
-    const {loading} = useContext(MyContext);
-    useEffect(() => {
-        const loadingSpinner = document.querySelector(".loader-container");
-        loading ? loadingSpinner.style.display = "flex" : loadingSpinner.style.display = "none";
-    }, [loading])
     return (
         <div className="loader-container">
             <p>Loading data, please wait</p>
@@ -15,4 +8,3 @@ export const LoadingSpinner = () => {
         </div>
     )
 }
-

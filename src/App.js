@@ -33,6 +33,11 @@ function App() {
     setCategories(categories);
   }, [products])
 
+  useEffect(() => {
+    const loadingSpinner = document.querySelector(".loader-container");
+    loading ? loadingSpinner.style.display = "flex" : loadingSpinner.style.display = "none";
+  }, [loading])
+
   const incrementProduct = (setFunc) => {
     setFunc((prev) =>  prev + 1);
   };
@@ -55,7 +60,7 @@ function App() {
   }
 
   return (
-    <MyContext.Provider value={{categories, products, setCategories, filterByValue, setFilterByValue, setSortByValue, itemsInCart, setItemsInCart, incrementProduct, decrementProduct, addToCart, loading}}>
+    <MyContext.Provider value={{itemsInCart, setItemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue}}>
       <div className="App">
         <Nav/>
         <LoadingSpinner/>
