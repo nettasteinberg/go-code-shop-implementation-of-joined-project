@@ -1,6 +1,6 @@
 import './Product.css'
 import { Button } from '../Button/Button';
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { MyContext } from '../../MyContext';
 
 export const Product = ({src, title, price}) => {  
