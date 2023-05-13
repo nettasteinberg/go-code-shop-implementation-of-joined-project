@@ -5,12 +5,11 @@ import { Button } from "../Button/Button";
 
 
 export const ProductInCart = ({product}) => {
-    const {itemsInCart, setItemsInCart} = useContext(MyContext);
+    const {itemsInCart} = useContext(MyContext);
     
     const removeFromCart = (product) => {
         console.log(`removing product "${product}" from cart`);
         delete itemsInCart[product];
-        setItemsInCart({...itemsInCart});
     }
 
     const subtract = () => {
@@ -19,12 +18,10 @@ export const ProductInCart = ({product}) => {
         } else {
             itemsInCart[product][0] -= 1;
         }
-        setItemsInCart({...itemsInCart});
     }
     
     const add = () => {
         itemsInCart[product][0] +=  1;
-        setItemsInCart({...itemsInCart});
     }
     
     return (

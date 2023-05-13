@@ -33,12 +33,18 @@ export const Routing = () => {
     const categories = products.map(p => p.category).filter((value, index, array) => array.indexOf(value)===index);
     setCategories(categories);
     console.log("categories: ", categories);
-  }, [products])
+  }, [products]);
 
   useEffect(() => {
     const loadingSpinner = document.querySelector(".loader-container");
-    loading ? loadingSpinner.style.display = "flex" : loadingSpinner.style.display = "none";
+    if (loadingSpinner) {
+      loading ? loadingSpinner.style.display = "flex" : loadingSpinner.style.display = "none";
+    };
   }, [loading])
+
+  useEffect(() => {
+    setItemsInCart({...itemsInCart});
+  }, [itemsInCart]);
 
   const incrementProduct = (setFunc) => {
     setFunc((prev) =>  prev + 1);
@@ -70,11 +76,11 @@ export const Routing = () => {
 
   return (
     <BrowserRouter>
-      <MyContext.Provider value={{itemsInCart, setItemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue}}>
-        <StyledLink to="/">HomePage</StyledLink>
-        <StyledLink to="about">About</StyledLink>
-        <StyledLink to="cart">Cart</StyledLink>
-        <StyledLink to="admin">Admin</StyledLink>
+      <MyContext.Provider value={{itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue}}>
+        <Link to="/">HomePage</Link>
+        <Link to="about">About</Link>
+        <Link to="cart">Cart</Link>
+        <Link to="admin">Admin</Link>
         <Routes>
             <Route path="/" element={<App />} />
             <Route path="product/:id" element={<SingleProductPage />}/>
