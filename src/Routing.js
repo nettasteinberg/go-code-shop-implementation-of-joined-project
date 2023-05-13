@@ -73,10 +73,10 @@ export const Routing = () => {
   return (
     <BrowserRouter>
       <MyContext.Provider value={{itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue, setItemsInCart}}>
-        <Link to="/">HomePage</Link>
-        <Link to="about">About</Link>
-        <Link to="cart">Cart</Link>
-        <Link to="admin">Admin</Link>
+        <StyledLink to="/">HomePage</StyledLink>
+        <StyledLink to="about">About</StyledLink>
+        <StyledLink to="cart">Cart</StyledLink>
+        <StyledLink to="admin">Admin</StyledLink>
         <Routes>
             <Route path="/" element={<App />} />
             <Route path="product/:id" element={<SingleProductPage />}/>

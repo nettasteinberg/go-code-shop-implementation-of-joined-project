@@ -13,7 +13,7 @@ export const FilterOrSort = ({label, optionsArr}) => {
         <div className="collection-sort">
         <label>{`${label} by:`}</label>
         <select className={label === "Filter" ? "filter" : "sort"} onChange={(e) => label === "Filter" ? setFilterByValue(e.target.value) : setSortByValue(e.target.value)}>
-            {optionsArr.map((opt) => <option value={opt}>{opt}</option>)}
+            {optionsArr.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
         </select>
       </div>
     )
