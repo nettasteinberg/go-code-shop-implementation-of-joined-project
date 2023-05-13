@@ -2,7 +2,7 @@ import App from './App';
 import { MyContext } from './MyContext';
 import { Cart } from './components/Cart/Cart';
 import React, {useState, useEffect} from 'react'
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
 import About from './pages/About/About';
 import Admin from './pages/Admin/Admin';
@@ -63,20 +63,38 @@ export const Routing = () => {
     setFunc(0);
   }
 
-  const StyledLink = styled(Link)`
-    color: Blue;
-    text-decoration: none;
-    margin: 0.5rem;
-    position: relative;
-    `;
+  const NavUnlisted = styled.ul`
+
+    display: flex;
+
+    a {
+      text-decoration: none;
+    }
+
+    li {
+      color: #c24d2c;
+      margin: 0 0.8rem;
+      font-size: 1.3rem;
+      position: relative;
+      list-style: none;
+    }
+
+    .active {
+      li {
+        border-bottom: 2px solid black;
+      }
+    }
+  `;
 
   return (
     <BrowserRouter>
       <MyContext.Provider value={{itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue, setItemsInCart}}>
-        <StyledLink to="/">HomePage</StyledLink>
-        <StyledLink to="about">About</StyledLink>
-        <StyledLink to="cart">Cart</StyledLink>
-        <StyledLink to="admin">Admin</StyledLink>
+        <NavUnlisted>
+          <NavLink to="/" activeClassName="current" exact><li>HomePage</li></NavLink>
+          <NavLink to="about" activeClassName="current" exact><li>About</li></NavLink>
+          <NavLink to="cart" activeClassName="current" exact><li>Cart</li></NavLink>
+          <NavLink to="admin" activeClassName="current" exact><li>Admin</li></NavLink>
+        </NavUnlisted>
         <Routes>
             <Route path="/" element={<App />} />
             <Route path="product/:id" element={<SingleProductPage />}/>
