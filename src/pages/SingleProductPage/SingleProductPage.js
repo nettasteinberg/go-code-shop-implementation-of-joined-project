@@ -20,7 +20,6 @@ const SingleProductPage = () => {
   //   setCurrentId(data.id);
   // }
 
-  
   const {products} = useContext(MyContext);
   const singleProduct = products.find(p => {console.log(p.id, p.id === parseInt(params.id)); return p.id === parseInt(params.id)});
 
