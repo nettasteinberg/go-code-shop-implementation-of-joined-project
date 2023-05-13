@@ -42,10 +42,6 @@ export const Routing = () => {
     };
   }, [loading])
 
-  useEffect(() => {
-    setItemsInCart({...itemsInCart});
-  }, [itemsInCart]);
-
   const incrementProduct = (setFunc) => {
     setFunc((prev) =>  prev + 1);
   };
@@ -76,7 +72,7 @@ export const Routing = () => {
 
   return (
     <BrowserRouter>
-      <MyContext.Provider value={{itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue}}>
+      <MyContext.Provider value={{itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue, setItemsInCart}}>
         <Link to="/">HomePage</Link>
         <Link to="about">About</Link>
         <Link to="cart">Cart</Link>
