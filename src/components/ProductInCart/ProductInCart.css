@@ -20,3 +20,8 @@
     justify-content: space-between;
     margin: 0px 5px;
 }
+
+.addSubtractContainer {
+    display: flex;
+    justify-content: flex-start;
+}

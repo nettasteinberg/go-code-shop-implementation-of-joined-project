@@ -3,7 +3,6 @@ import React, { useContext } from "react"
 import { MyContext } from "../../MyContext"
 import { Button } from "../Button/Button";
 
-
 export const ProductInCart = ({product}) => {
     const {itemsInCart, setItemsInCart} = useContext(MyContext);
     
@@ -36,7 +35,7 @@ export const ProductInCart = ({product}) => {
                 <p><span style={{ fontWeight: 'bold' }}>Total price:</span> {Number.parseFloat(itemsInCart[product][1] * itemsInCart[product][0]).toFixed(2)}$</p>
             </div>
             <div className="adjustAmountInCart">
-                <div className="addToCartContainer">
+                <div className="addSubtractContainer">
                     <Button onClick={() => subtract()} text={"-"} />
                     <Button onClick={() => add()} text={"+"} />
                 </div>
