@@ -84,7 +84,7 @@ export const Routing = () => {
         border-bottom: 2px solid black;
       }
     }
-  `;
+  `; // Taken from https://dev.to/ridhikgovind/how-to-style-your-react-router-links-using-styled-components-2350
 
   return (
     <BrowserRouter>
