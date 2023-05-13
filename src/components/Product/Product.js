@@ -2,15 +2,16 @@ import './Product.css'
 import { Button } from '../Button/Button';
 import React, { useContext, useState } from 'react';
 import { MyContext } from '../../MyContext';
+import { useNavigate } from "react-router-dom";
 
-export const Product = ({src, title, price}) => {  
-  
+export const Product = ({src, title, price, id}) => { 
+  const navigate = useNavigate();
   const {incrementProduct, decrementProduct, addToCart} = useContext(MyContext);
   const [count, setCount] = useState(0);
 
   return (
     <div className="product-card">
-      <div className="product-image">
+      <div className="product-image" onClick={() => navigate(`product/${id}`)}>
         <img src={src} alt={title}/>
       </div>
       <div className="product-info">

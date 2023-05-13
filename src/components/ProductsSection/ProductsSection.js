@@ -8,7 +8,7 @@ export const ProductsSection = () => {
 
   return (
     <section className="products">
-      {products.filter(filterByValue === "All Products" ? p => true : p => p.category === filterByValue).map((p) => <Product key={p.id} src={p.image} title={p.title} price={p.price}/>)}
+      {products.filter(filterByValue === "All Products" ? p => true : p => p.category === filterByValue).map((p) => <Product key={p.id} src={p.image} title={p.title} price={p.price} id ={p.id}/>)}
     </section>
   );
 };
