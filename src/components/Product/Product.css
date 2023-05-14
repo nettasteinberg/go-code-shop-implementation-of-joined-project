@@ -25,6 +25,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    margin: 5px 0px;
 }
 
 @media (max-width: 920px) {
