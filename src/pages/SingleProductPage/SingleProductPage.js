@@ -7,10 +7,9 @@ const SingleProductPage = () => {
   const params = useParams();
   const {products} = useContext(MyContext);
 
-  let singleProduct = products.find(p => {console.log(p.id, p.id === parseInt(params.id)); return p.id === parseInt(params.id)});
+  let singleProduct = products.find(p => p.id === parseInt(params.id));
 
   useEffect(() => {
-    console.log("params changed");
     singleProduct = products.find(p => p.id === parseInt(params.id));
   }, [params]);
 
