@@ -2,7 +2,7 @@ import App from './App';
 import { MyContext } from './MyContext';
 import { Cart } from './components/Cart/Cart';
 import React, {useState, useEffect} from 'react'
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, Routes, Route, NavLink, Navigate } from "react-router-dom";
 import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
 import About from './pages/About/About';
 import Admin from './pages/Admin/Admin';
@@ -101,6 +101,7 @@ export const Routing = () => {
             <Route path="about" element={<About />} />
             <Route path="cart" element={<Cart />} />
             <Route path="admin" element={<Admin />} />
+            <Route path="*" element={<Navigate to="/" replace />} />  
         </Routes>
       </MyContext.Provider>
     </BrowserRouter>
