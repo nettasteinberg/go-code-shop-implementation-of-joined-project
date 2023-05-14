@@ -35,11 +35,13 @@ export const ProductInCart = ({product}) => {
                 <p><span style={{ fontWeight: 'bold' }}>Total price:</span> {Number.parseFloat(itemsInCart[product][1] * itemsInCart[product][0]).toFixed(2)}$</p>
             </div>
             <div className="adjustAmountInCart">
-                <div className="addSubtractContainer">
+                <div className="addSubtractCartContainer">
                     <Button onClick={() => subtract()} text={"-"} />
                     <Button onClick={() => add()} text={"+"} />
                 </div>
-                <button onClick={() => removeFromCart(product)}>Remove</button>
+                <div>
+                    <button onClick={() => removeFromCart(product)}>Remove</button>
+                </div>
             </div>
         </div>
     )
