@@ -73,7 +73,7 @@ export const Routing = () => {
     }
 
     li {
-      color: #c24d2c;
+      color: #dc2f2f;
       margin: 0 0.8rem;
       font-size: 1.3rem;
       position: relative;
