@@ -7,6 +7,7 @@ import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
 import About from './pages/About/About';
 import Admin from './pages/Admin/Admin';
 import styled from "styled-components";
+import NotFound from './pages/NotFound/NotFound';
 
 export const Routing = () => {
   const [categories, setCategories] = useState([]);
@@ -101,7 +102,8 @@ export const Routing = () => {
             <Route path="about" element={<About />} />
             <Route path="cart" element={<Cart />} />
             <Route path="admin" element={<Admin />} />
-            <Route path="*" element={<Navigate to="/" replace />} />  
+            {/* <Route path="*" element={<Navigate to="/" replace />} />   */}
+            <Route path="*" element={<NotFound />} />
         </Routes>
       </MyContext.Provider>
     </BrowserRouter>
