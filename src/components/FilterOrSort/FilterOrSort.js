@@ -2,18 +2,20 @@ import "./FilterOrSort.css";
 import React, { useContext } from "react";
 import { MyContext } from "../../MyContext";
 
-export const FilterOrSort = ({label, optionsArr}) => {
-    const { categories, setFilterByValue, setSortByValue } = useContext(MyContext);
+export const FilterOrSort = ({label}) => {
+    const { categories, setFilterByValue, setSortByValue, sortOptions } = useContext(MyContext);
+    let options = "";
     if (label === "Filter") {
-        optionsArr = categories;
+        options = ["All products", ...categories];
+    } else {
+        options = ["Default", ...sortOptions];
     }
-    optionsArr = ["All Products", ...optionsArr];
 
     return (
         <div className="collection-sort">
         <label>{`${label} by:`}</label>
-        <select className={label === "Filter" ? "filter" : "sort"} onChange={(e) => label === "Filter" ? setFilterByValue(e.target.value) : setSortByValue(e.target.value)}>
-            {optionsArr.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
+        <select className={label === "Filter" ? "filter" : "sort"} onChange={(e) => label === "Filter" ? setFilterByValue(e.target.value) : setSortByValue(e.target.value) }>
+            {options.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
         </select>
       </div>
     )

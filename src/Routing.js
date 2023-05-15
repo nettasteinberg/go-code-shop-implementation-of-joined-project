@@ -11,11 +11,13 @@ import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
 
 export const Routing = () => {
   const [categories, setCategories] = useState([]);
-  const [filterByValue, setFilterByValue] = useState("All Products");
-  const [sortByValue, setSortByValue] = useState("All Products");
+  const [filterByValue, setFilterByValue] = useState("All products");
+  const [sortByValue, setSortByValue] = useState("Default");
   const [itemsInCart, setItemsInCart] = useState({});
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
+
+  const sortOptions = ["Alphabetically, A-Z", "Alphabetically, Z-A", "Price, low to high", "Price, high to low", "Rating"];
 
   useEffect(() => {
     fetchProducts();
@@ -89,7 +91,7 @@ export const Routing = () => {
 
   return (
     <BrowserRouter>
-      <MyContext.Provider value={{itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue, setItemsInCart}}>
+      <MyContext.Provider value={{itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue, sortByValue, setItemsInCart, sortOptions}}>
         <NavUnlisted>
           <NavLink to="/" activeClassName="current" exact><li>HomePage</li></NavLink>
           <NavLink to="about" activeClassName="current" exact><li>About</li></NavLink>
