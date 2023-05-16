@@ -1,8 +1,8 @@
-import './Product.css'
-import { Button } from '../Button/Button';
 import React, { useContext, useState } from 'react';
+import { Button } from '../Button/Button'; 
 import { MyContext } from '../../MyContext';
 import { useNavigate } from "react-router-dom";
+import './Product.css'
 
 export const Product = ({src, title, price, id}) => { 
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
-import './Nav.css';
-import { FilterOrSort } from '../FilterOrSort/FilterOrSort';
-import { sortArrOptions } from '../../dummy-data/data';
 import React from "react";
+import { sortArrOptions } from '../../dummy-data/data';
+import { FilterOrSort } from '../FilterOrSort/FilterOrSort';
+import './Nav.css';
 
 export const Nav = () => {
   return (

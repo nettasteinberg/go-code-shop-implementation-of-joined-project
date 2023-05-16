@@ -1,6 +1,6 @@
-import "./FilterOrSort.css";
 import React, { useContext } from "react";
 import { MyContext } from "../../MyContext";
+import "./FilterOrSort.css";
 
 export const FilterOrSort = ({label}) => {
     const { categories, setFilterByValue, setSortByValue, sortOptions } = useContext(MyContext);

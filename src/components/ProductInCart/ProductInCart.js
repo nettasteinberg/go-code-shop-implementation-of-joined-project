@@ -1,7 +1,7 @@
-import "./ProductInCart.css"
-import React, { useContext } from "react"
-import { MyContext } from "../../MyContext"
+import React, { useContext } from "react";
+import { MyContext } from "../../MyContext";
 import { Button } from "../Button/Button";
+import "./ProductInCart.css";
 
 export const ProductInCart = ({product}) => {
     const {itemsInCart, setItemsInCart} = useContext(MyContext);

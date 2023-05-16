@@ -1,8 +1,8 @@
-import './ProductsSection.css'
-import React, {useContext} from "react"
-import { Product } from "../Product/Product";
+import React, { useContext } from "react";
 import { MyContext } from "../../MyContext";
 import { sortAlphabeticallyAToZ, sortAlphabeticallyZToA, sortByPriceHighToLow, sortByPriceLowToHigh, sortByRating } from '../../dummy-data/sortingAlgorithms';
+import { Product } from "../Product/Product";
+import './ProductsSection.css';
 
 export const ProductsSection = () => {
   const {products, filterByValue, sortByValue} = useContext(MyContext);
