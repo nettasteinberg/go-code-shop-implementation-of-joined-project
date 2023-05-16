@@ -3,10 +3,10 @@ import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import App from './App';
 import { MyContext } from './MyContext';
-import { Cart } from './components/Cart/Cart';
-import About from './pages/About/About';
-import Admin from './pages/Admin/Admin';
-import NotFound from './pages/NotFound/NotFound';
+import AboutPage from './pages/AboutPage/AboutPage';
+import AdminPage from './pages/AdminPage/AdminPage';
+import CartPage from './pages/CartPage/CartPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
 
 export const Routing = () => {
@@ -101,11 +101,11 @@ export const Routing = () => {
         <Routes>
             <Route path="/" element={<App />} />
             <Route path="product/:id" element={<SingleProductPage />}/>
-            <Route path="about" element={<About />} />
-            <Route path="cart" element={<Cart />} />
-            <Route path="admin" element={<Admin />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="cart" element={<CartPage />} />
+            <Route path="admin" element={<AdminPage />} />
+            <Route path="*" element={<NotFoundPage />} />
             {/* <Route path="*" element={<Navigate to="/" replace />} />   */}
-            <Route path="*" element={<NotFound />} />
         </Routes>
       </MyContext.Provider>
     </BrowserRouter>

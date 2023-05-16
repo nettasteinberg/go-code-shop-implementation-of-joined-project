@@ -1,9 +1,9 @@
-import "./Cart.css"
-import React, { useContext } from "react"
-import { MyContext } from "../../MyContext"
-import { ProductInCart } from "../ProductInCart/ProductInCart";
+import React, { useContext } from "react";
+import { MyContext } from "../../MyContext";
+import { ProductInCart } from "../../components/ProductInCart/ProductInCart";
+import "./CartPage.css";
 
-export const Cart = () => {
+export const CartPage = () => {
     const {itemsInCart} = useContext(MyContext);
     return (
         <div className="cart">
@@ -14,3 +14,5 @@ export const Cart = () => {
         </div>
     )
 }
+
+export default CartPage

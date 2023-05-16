@@ -1,7 +1,7 @@
 import React from 'react'
-import "./NotFound.css"
+import "./NotFoundPage.css"
 
-const NotFound = () => {
+const NotFoundPage = () => {
     return (
         <div className="notFound">
             <div >The address {window.location.href} doesn't exist.</div>
@@ -10,4 +10,4 @@ const NotFound = () => {
     )
 }
 
-export default NotFound
+export default NotFoundPage
