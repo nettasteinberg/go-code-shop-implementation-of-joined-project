@@ -11,19 +11,14 @@ export const ProductsSection = () => {
     switch(value) {
       case "Alphabetically, A-Z":
         return sortAlphabeticallyAToZ;
-        break;
       case "Alphabetically, Z-A":
         return sortAlphabeticallyZToA;
-        break;
       case "Price, low to high":
         return sortByPriceLowToHigh;
-        break;
       case "Price, high to low":
         return sortByPriceHighToLow;
-        break;
       case "Rating":
         return sortByRating;
-        break;
       default:
         return () => 1;
     }
