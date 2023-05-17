@@ -16,6 +16,10 @@ export const Routing = () => {
   const [itemsInCart, setItemsInCart] = useState({});
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
+  const [highestPrice, setHighestPrice] = useState(1);
+  const [value, setValue] = useState([1, highestPrice]);
+  const [lowestPriceInRange, setLowestPriceInRange] = useState(1);
+  const [highestPriceInRange, setHighestPriceInRange] = useState(highestPrice);
 
   const sortOptions = ["Alphabetically, A-Z", "Alphabetically, Z-A", "Price, low to high", "Price, high to low", "Rating"];
 
@@ -35,13 +39,22 @@ export const Routing = () => {
   useEffect(() => {
     const categories = products.map(p => p.category).filter((value, index, array) => array.indexOf(value)===index);
     setCategories(categories);
-    console.log("categories: ", categories);
+    const newHighestPrice = Math.max(parseFloat(products.map(p => p.price)));
+    setHighestPrice(newHighestPrice);
+    setHighestPriceInRange(newHighestPrice);
+    console.log("highest price: ", newHighestPrice);
   }, [products]);
 
   useEffect(() => {
+    setValue([1, highestPrice])
+  }, [highestPrice])
+
+  useEffect(() => {
     const loadingSpinner = document.querySelector(".loader-container");
+    const rangeSlider = document.querySelector(".rangeSlider")
     if (loadingSpinner) {
       loading ? loadingSpinner.style.display = "flex" : loadingSpinner.style.display = "none";
+      // loading ? rangeSlider.style.display = "flex" : rangeSlider.style.display = "none";
     };
   }, [loading])
 
@@ -91,7 +104,7 @@ export const Routing = () => {
 
   return (
     <BrowserRouter>
-      <MyContext.Provider value={{itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue, sortByValue, setItemsInCart, sortOptions}}>
+      <MyContext.Provider value={{itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue, sortByValue, setItemsInCart, sortOptions, highestPrice, value, setValue, lowestPriceInRange, setLowestPriceInRange, highestPriceInRange, setHighestPriceInRange}}>
         <NavUnlisted>
           <NavLink to="/" activeClassName="current" exact><li>HomePage</li></NavLink>
           <NavLink to="about" activeClassName="current" exact><li>About</li></NavLink>
