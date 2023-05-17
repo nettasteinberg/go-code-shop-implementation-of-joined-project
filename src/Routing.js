@@ -51,10 +51,8 @@ export const Routing = () => {
 
   useEffect(() => {
     const loadingSpinner = document.querySelector(".loader-container");
-    const rangeSlider = document.querySelector(".rangeSlider")
     if (loadingSpinner) {
       loading ? loadingSpinner.style.display = "flex" : loadingSpinner.style.display = "none";
-      // loading ? rangeSlider.style.display = "flex" : rangeSlider.style.display = "none";
     };
   }, [loading])
 

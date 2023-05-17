@@ -3,6 +3,7 @@ import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
 import React, { useContext } from 'react';
 import { MyContext } from '../../MyContext';
+import "./RangeSlider.css";
 
 function valueText(value) {
     return `${value}$`;
@@ -11,7 +12,7 @@ function valueText(value) {
 const minDistance = 1;
 
 const RangeSlider = () => {
-    const { highestPrice, value, setValue, setLowestPriceInRange, setHighestPriceInRange, categories} = useContext(MyContext);
+    const { highestPrice, value, setValue, setLowestPriceInRange, setHighestPriceInRange} = useContext(MyContext);
     console.log("highest price range slider", highestPrice)
     console.log("value[0]", value[0], "value[1]", value[1])
     const handleChange = (event, newValue, activeThumb) => {
@@ -32,18 +33,19 @@ const RangeSlider = () => {
     };
 
     return (
-        <Box sx={{ width: 300 }} className="rangeSlider">
-            <Typography id="input-slider">
+        <Box sx={{ width: 300 }} className="box">
+            <Typography variant='h5'>
                 Price Range
             </Typography>
             <Slider
                 getAriaLabel={() => 'Price range'}
                 value={value}
                 onChange={handleChange}
-                valueLabelDisplay="auto"
+                valueLabelDisplay="on"
                 getAriaValueText={valueText}
                 min={1}
                 max={highestPrice}
+                marks={[{value: 1, label: "1$"},{value: highestPrice, label: `${highestPrice}$`}]}
             />
         </Box>
     )

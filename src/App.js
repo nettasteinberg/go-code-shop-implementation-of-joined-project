@@ -7,12 +7,14 @@ import RangeSlider from './components/RangeSlider/RangeSlider';
 
 function App() {
   return (
-      <div className="App">
-        <Nav/>
-        <LoadingSpinner/>
+    <div className="App">
+      <Nav />
+      <div className="rangeSlider">
         <RangeSlider />
-        <ProductsSection/>
       </div>
+      <LoadingSpinner />
+      <ProductsSection />
+    </div>
   );
 }
 

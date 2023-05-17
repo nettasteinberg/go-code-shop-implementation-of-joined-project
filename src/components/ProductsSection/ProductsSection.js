@@ -6,8 +6,8 @@ import './ProductsSection.css';
 
 export const ProductsSection = () => {
   const {products, filterByValue, sortByValue, lowestPriceInRange, highestPriceInRange} = useContext(MyContext);
-  const sortByValueFunc = (value) => {
-    switch(value) {
+  const sortByValueFunc = (sortValue) => {
+    switch(sortValue) {
       case "Alphabetically, A-Z":
         return sortAlphabeticallyAToZ;
       case "Alphabetically, Z-A":
@@ -22,8 +22,6 @@ export const ProductsSection = () => {
         return () => 1;
     }
   }
-
-  console.log("current highest price in range", highestPriceInRange)
 
   return (
     <section className="products">
