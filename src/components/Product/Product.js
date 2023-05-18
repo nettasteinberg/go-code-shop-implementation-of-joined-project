@@ -38,7 +38,7 @@ export const Product = ({ src, title, price, id }) => {
         <Button onClick={() => incrementProduct(setCount)} text={"+"} />
       </CardActions>
       <CardActions>
-        <Button onClick={() => addToCart(title, count, price, setCount)} text={"ADD TO CART"} />
+        <Button onClick={() => addToCart(id, title, count, price, setCount)} text={"ADD TO CART"} />
       </CardActions>
     </Card>
   );

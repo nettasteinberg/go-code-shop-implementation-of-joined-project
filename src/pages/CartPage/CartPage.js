@@ -9,7 +9,7 @@ export const CartPage = () => {
         <div className="cart">
             {Object.keys(itemsInCart).length > 0 && <h1>Shopping Cart</h1>}
             <div className="cartItems">
-                {Object.keys(itemsInCart).map((key) => <ProductInCart product={key}/>)}
+                {Object.keys(itemsInCart).map((id) => <ProductInCart id={id}/>)}
             </div>
         </div>
     )

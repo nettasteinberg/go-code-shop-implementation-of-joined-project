@@ -20,6 +20,7 @@ export const Routing = () => {
   const [value, setValue] = useState([1, highestPrice]);
   const [lowestPriceInRange, setLowestPriceInRange] = useState(1);
   const [highestPriceInRange, setHighestPriceInRange] = useState(highestPrice);
+  const [isCartOpen, setIsCartOpen] = useState(false)
 
   const sortOptions = ["Alphabetically, A-Z", "Alphabetically, Z-A", "Price, low to high", "Price, high to low", "Rating"];
 
@@ -64,14 +65,15 @@ export const Routing = () => {
     setFunc((prev) => (prev === 0 ? prev : prev - 1));
   };
 
-  const addToCart = (productName, amount, price, setFunc) => {
+  const addToCart = (id, productName, amount, price, setFunc) => {
     if (amount === 0) {
       return;
     }
-    if (productName in itemsInCart) {
-      itemsInCart[productName][0] += amount;
+    if (id in itemsInCart) {
+      itemsInCart[productName]["amount"] += amount;
     } else {
-      itemsInCart[productName] = [amount, price];
+      itemsInCart[id] = {"name": productName, "amount": amount, "price": price};
+      console.log(`added item: ${id}`, itemsInCart[id])
     }
     setItemsInCart({...itemsInCart});
     setFunc(0);
@@ -102,7 +104,7 @@ export const Routing = () => {
 
   return (
     <BrowserRouter>
-      <MyContext.Provider value={{itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue, sortByValue, setItemsInCart, sortOptions, highestPrice, value, setValue, lowestPriceInRange, setLowestPriceInRange, highestPriceInRange, setHighestPriceInRange}}>
+      <MyContext.Provider value={{itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue, sortByValue, setItemsInCart, sortOptions, highestPrice, value, setValue, lowestPriceInRange, setLowestPriceInRange, highestPriceInRange, setHighestPriceInRange, isCartOpen, setIsCartOpen}}>
         <NavUnlisted>
           <NavLink to="/" activeClassName="current" exact><li>HomePage</li></NavLink>
           <NavLink to="about" activeClassName="current" exact><li>About</li></NavLink>

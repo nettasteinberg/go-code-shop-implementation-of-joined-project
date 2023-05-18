@@ -3,36 +3,36 @@ import { MyContext } from "../../MyContext";
 import { Button } from "../Button/Button";
 import "./ProductInCart.css";
 
-export const ProductInCart = ({product}) => {
+export const ProductInCart = ({id}) => {
     const {itemsInCart, setItemsInCart} = useContext(MyContext);
     
-    const removeFromCart = (product) => {
-        console.log(`removing product "${product}" from cart`);
-        delete itemsInCart[product];
+    const removeFromCart = (id) => {
+        console.log(`removing product "${itemsInCart[id]["name"]}" from cart`);
+        delete itemsInCart[id];
         setItemsInCart({...itemsInCart});
     }
 
     const subtract = () => {
-        if (itemsInCart[product][0] === 1) {
+        if (itemsInCart[id]["amount"] === 1) {
             return;
         } else {
-            itemsInCart[product][0] -= 1;
+            itemsInCart[id]["amount"] -= 1;
         }
         setItemsInCart({...itemsInCart});
     }
     
     const add = () => {
-        itemsInCart[product][0] +=  1;
+        itemsInCart[id]["amount"] +=  1;
         setItemsInCart({...itemsInCart});
     }
     
     return (
         <div className="productInCart">
             <div>
-                <p><span style={{ fontWeight: 'bold' }}>Product name:</span> {product}</p>
-                <p><span style={{ fontWeight: 'bold' }}>Product price:</span> {itemsInCart[product][1]}$</p>
-                <p><span style={{ fontWeight: 'bold' }}>Product amount:</span> {itemsInCart[product][0]}</p>
-                <p><span style={{ fontWeight: 'bold' }}>Total price:</span> {Number.parseFloat(itemsInCart[product][1] * itemsInCart[product][0]).toFixed(2)}$</p>
+                <p><span style={{ fontWeight: 'bold' }}>Product name:</span> {itemsInCart[id]["name"]}</p>
+                <p><span style={{ fontWeight: 'bold' }}>Product price:</span> {itemsInCart[id]["price"]}$</p>
+                <p><span style={{ fontWeight: 'bold' }}>Product amount:</span> {itemsInCart[id]["amount"]}</p>
+                <p><span style={{ fontWeight: 'bold' }}>Total price:</span> {Number.parseFloat(itemsInCart[id]["price"] * itemsInCart[id]["amount"]).toFixed(2)}$</p>
             </div>
             <div className="adjustAmountInCart">
                 <div className="addSubtractCartContainer">
@@ -40,7 +40,7 @@ export const ProductInCart = ({product}) => {
                     <Button onClick={() => add()} text={"+"} />
                 </div>
                 <div>
-                    <button onClick={() => removeFromCart(product)}>Remove</button>
+                    <button onClick={() => removeFromCart(id)}>Remove</button>
                 </div>
             </div>
         </div>
