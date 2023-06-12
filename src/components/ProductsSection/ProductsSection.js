@@ -29,7 +29,7 @@ export const ProductsSection = () => {
       .filter(filterByValue.toLowerCase() === "all products" ? p => true : p => p.category === filterByValue)
       .filter(p => p.price >= lowestPriceInRange && p.price <= highestPriceInRange)
       .sort(sortByValueFunc(sortByValue))
-      .map((p) => <Product key={p.id} src={p.image} title={p.title} price={p.price} id ={p.id}/>)}
+      .map((p) => <Product key={p.id} src={p.image} title={p.title} price={p.price} id ={p._id}/>)}
     </section>
   );
 };

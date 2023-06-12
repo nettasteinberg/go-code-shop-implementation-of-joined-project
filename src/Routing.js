@@ -8,6 +8,7 @@ import AdminPage from './pages/AdminPage/AdminPage';
 import CartPage from './pages/CartPage/CartPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
+import { GET_ALL_PRODUCTS_PATH } from './constants/api';
 
 export const Routing = () => {
   const [categories, setCategories] = useState([]);
@@ -26,21 +27,12 @@ export const Routing = () => {
 
   useEffect(() => {
     fetchProducts();
-  },[]);
-
-  const fetchProducts = async () => {
-    setLoading(true);
-    const response = await fetch("https://fakestoreapi.com/products");
-    const data = await response.json();
-    setLoading(false);
-    console.log("data", data);
-    setProducts(data);
-  }
+  }, []);
 
   useEffect(() => {
-    const categories = products.map(p => p.category).filter((value, index, array) => array.indexOf(value)===index);
+    const categories = products.map(p => p.category).filter((value, index, array) => array.indexOf(value) === index);
     setCategories(categories);
-    const newHighestPrice = Math.max(parseFloat(products.map(p => p.price)));
+    let newHighestPrice = Math.max(...products.map(p => p.price));
     setHighestPrice(newHighestPrice);
     setHighestPriceInRange(newHighestPrice);
     console.log("highest price: ", newHighestPrice);
@@ -57,10 +49,23 @@ export const Routing = () => {
     };
   }, [loading])
 
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(GET_ALL_PRODUCTS_PATH);
+      const data = await response.json();
+      setLoading(false);
+      console.log("data", data);
+      setProducts(data);
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+
   const incrementProduct = (setFunc) => {
-    setFunc((prev) =>  prev + 1);
+    setFunc((prev) => prev + 1);
   };
-  
+
   const decrementProduct = (setFunc) => {
     setFunc((prev) => (prev === 0 ? prev : prev - 1));
   };
@@ -72,10 +77,10 @@ export const Routing = () => {
     if (id in itemsInCart) {
       itemsInCart[productName]["amount"] += amount;
     } else {
-      itemsInCart[id] = {"name": productName, "amount": amount, "price": price};
+      itemsInCart[id] = { "name": productName, "amount": amount, "price": price };
       console.log(`added item: ${id}`, itemsInCart[id])
     }
-    setItemsInCart({...itemsInCart});
+    setItemsInCart({ ...itemsInCart });
     setFunc(0);
   }
 
@@ -104,7 +109,7 @@ export const Routing = () => {
 
   return (
     <BrowserRouter>
-      <MyContext.Provider value={{itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue, sortByValue, setItemsInCart, sortOptions, highestPrice, value, setValue, lowestPriceInRange, setLowestPriceInRange, highestPriceInRange, setHighestPriceInRange, isCartOpen, setIsCartOpen}}>
+      <MyContext.Provider value={{ itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue, sortByValue, setItemsInCart, sortOptions, highestPrice, value, setValue, lowestPriceInRange, setLowestPriceInRange, highestPriceInRange, setHighestPriceInRange, isCartOpen, setIsCartOpen }}>
         <NavUnlisted>
           <NavLink to="/" activeClassName="current" exact><li>HomePage</li></NavLink>
           <NavLink to="about" activeClassName="current" exact><li>About</li></NavLink>
@@ -112,13 +117,13 @@ export const Routing = () => {
           <NavLink to="admin" activeClassName="current" exact><li>Admin</li></NavLink>
         </NavUnlisted>
         <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="product/:id" element={<SingleProductPage />}/>
-            <Route path="about" element={<AboutPage />} />
-            <Route path="cart" element={<CartPage />} />
-            <Route path="admin" element={<AdminPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-            {/* <Route path="*" element={<Navigate to="/" replace />} />   */}
+          <Route path="/" element={<App />} />
+          <Route path="product/:id" element={<SingleProductPage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="cart" element={<CartPage />} />
+          <Route path="admin" element={<AdminPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+          {/* <Route path="*" element={<Navigate to="/" replace />} />   */}
         </Routes>
       </MyContext.Provider>
     </BrowserRouter>

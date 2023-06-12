@@ -6,11 +6,10 @@ import "./SingleProductPage.css";
 const SingleProductPage = () => {
   const params = useParams();
   const {products} = useContext(MyContext);
-
-  let singleProduct = products.find(p => p.id === parseInt(params.id));
+  let singleProduct = products.find(p => p._id === params.id);
 
   useEffect(() => {
-    singleProduct = products.find(p => p.id === parseInt(params.id));
+    singleProduct = products.find(p => p._id === params.id);
   }, [params]);
 
   return (
