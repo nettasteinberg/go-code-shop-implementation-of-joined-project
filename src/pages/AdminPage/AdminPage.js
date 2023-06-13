@@ -7,33 +7,19 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { MyContext } from '../../MyContext';
+import { GET_OR_DELETE_PRODUCT_BY_ID } from '../../constants/api';
 
 
-function createData(title, description, price, category, image, rating) {
-  return { title, description, price, category, image, rating };
+function createData(title, description, price, category, image, rating, id) {
+  return { title, description, price, category, image, rating, id };
 }
-// const rows = [
-// createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-// createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-// createData('Eclair', 262, 16.0, 24, 6.0),
-// createData('Cupcake', 305, 3.7, 67, 4.3),
-// createData('Gingerbread', 356, 16.0, 49, 3.9),
-// ];
 
-// const rows1 = []
-// console.log("create data ", createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 10))
-// rows1.push(createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 10));
-// console.log("rows1 ", rows1);
- 
-
-export const AdminPage = () => {
+export const AdminPage = ( { fetchProducts }) => {
   const { products } = useContext(MyContext);
-  
+
   const rows = [];
   products.map((p) => {
-    console.log("p ", p);
-    console.log("p.title ", p.title)
-    rows.push(createData(p.title, p.description, p.price, p.category, p.image, p.rating))
+    rows.push(createData(p.title, p.description, p.price, p.category, p.image, p.rating, p._id))
   });
 
   return (
@@ -50,6 +36,7 @@ export const AdminPage = () => {
             <TableCell align="right">Category</TableCell>
             <TableCell align="right">Image</TableCell>
             <TableCell align="right">Rating</TableCell>
+            <TableCell align="left">Remove fo DB</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -64,8 +51,17 @@ export const AdminPage = () => {
               <TableCell align="left">{row.description}</TableCell>
               <TableCell align="right">{row.price}</TableCell>
               <TableCell align="right">{row.category}</TableCell>
-              <TableCell align="right"><img src={row.image} width={80} height={80}/></TableCell>
+              <TableCell align="right"><img src={row.image} width={80} height={80} /></TableCell>
               <TableCell align="right">rate: {row.rating.rate} count: {row.rating.count}</TableCell>
+              <TableCell><button onClick={async () => {
+                try {
+                  const response = await fetch(`${GET_OR_DELETE_PRODUCT_BY_ID}${row.id}`, { method: 'DELETE' }, { mode: "cors"});
+                  const data = await response.json();
+                  fetchProducts();
+                } catch (e) {
+                  console.log(e.message);
+                }
+              }}>Remove</button></TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -8,7 +8,7 @@ import AdminPage from './pages/AdminPage/AdminPage';
 import CartPage from './pages/CartPage/CartPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
-import { GET_ALL_PRODUCTS_PATH } from './constants/api';
+import { BASE_URL } from './constants/api';
 
 export const Routing = () => {
   const [categories, setCategories] = useState([]);
@@ -52,7 +52,7 @@ export const Routing = () => {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const response = await fetch(GET_ALL_PRODUCTS_PATH);
+      const response = await fetch(BASE_URL);
       const data = await response.json();
       setLoading(false);
       console.log("data", data);
@@ -121,7 +121,7 @@ export const Routing = () => {
           <Route path="product/:id" element={<SingleProductPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="cart" element={<CartPage />} />
-          <Route path="admin" element={<AdminPage />} />
+          <Route path="admin" element={<AdminPage fetchProducts={fetchProducts}/>} />
           <Route path="*" element={<NotFoundPage />} />
           {/* <Route path="*" element={<Navigate to="/" replace />} />   */}
         </Routes>
