@@ -8,7 +8,7 @@ import AdminPage from './pages/AdminPage/AdminPage';
 import CartPage from './pages/CartPage/CartPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
-import { BASE_URL, BASE_URL_API } from './constants/api';
+import { BASE_URL } from './constants/api';
 
 export const Routing = () => {
   const [categories, setCategories] = useState([]);

@@ -7,10 +7,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { MyContext } from '../../MyContext';
-import { BASE_URL, GET_OR_DELETE_OR_EDIT_PRODUCT_BY_ID } from '../../constants/api';
+import { GET_OR_DELETE_OR_EDIT_PRODUCT_BY_ID } from '../../constants/api';
 import AddProduct from '../../components/AddProduct/AddProduct';
 import { useNavigate } from 'react-router-dom';
 import "./AdminPage.css"
+import EditProduct from '../../components/EditProduct/EditProduct';
 
 
 function createData(title, description, price, category, image, rating, id) {
@@ -21,9 +22,10 @@ function createData(title, description, price, category, image, rating, id) {
 
 // }
 
-export const AdminPage = ({ fetchProducts }) => {
+export const AdminPage = () => {
 
-  const { products } = useContext(MyContext);
+  const [currentId, setCurrentId] = useState(null);
+  const { products, fetchProducts } = useContext(MyContext);
   const navigate = useNavigate();
 
   const rows = [];
@@ -32,7 +34,7 @@ export const AdminPage = ({ fetchProducts }) => {
   });
 
   return (
-    <React.Fragment>
+    <div className='admin-page'>
       <AddProduct />
       <TableContainer sx={{ marginTop: 2, marginBottom: 2 }} component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -45,7 +47,7 @@ export const AdminPage = ({ fetchProducts }) => {
               <TableCell align="left">Image</TableCell>
               <TableCell align="left">Rating</TableCell>
               <TableCell align="left">Remove product</TableCell>
-              {/* <TableCell align="left">Edit</TableCell> */}
+              <TableCell align="left">Edit</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -60,7 +62,7 @@ export const AdminPage = ({ fetchProducts }) => {
                 <TableCell align="left">{row.description}</TableCell>
                 <TableCell align="right">{row.price}</TableCell>
                 <TableCell align="left">{row.category}</TableCell>
-                <TableCell align="right"><img src={row.image} width={80} height={80} onClick={() => navigate(`/product/${row.id}`)} className='hover'/></TableCell>
+                <TableCell align="right"><img src={row.image} width={80} height={80} onClick={() => navigate(`/product/${row.id}`)} className='hover' /></TableCell>
                 <TableCell align="left">rate: {row.rating.rate} count: {row.rating.count}</TableCell>
                 <TableCell>
                   <button onClick={async () => {
@@ -73,12 +75,21 @@ export const AdminPage = ({ fetchProducts }) => {
                     }
                   }}>Remove</button>
                 </TableCell>
+                <TableCell>
+                  <button onClick={() => {
+                    // document.querySelector(".admin-page").classList.toggle("blurEffect");
+                    setCurrentId(row.id);
+                    document.querySelector(".editDiv").classList.toggle("hide");
+                    // document.querySelector("body").classList.toggle("blurEffect");
+                  }}>Edit</button>
+                </TableCell>
+                <EditProduct id={currentId} fetchProducts={fetchProducts} />
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-    </React.Fragment>
+    </div>
   )
 }
 
