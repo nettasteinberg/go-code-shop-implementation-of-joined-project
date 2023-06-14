@@ -18,13 +18,10 @@ function createData(title, description, price, category, image, rating, id) {
   return { title, description, price, category, image, rating, id };
 }
 
-// function openEditProduct() {
-
-// }
-
 export const AdminPage = () => {
 
   const [currentId, setCurrentId] = useState(null);
+  const [currentTitle, setCurrentTitle] = useState("");
   const { products, fetchProducts } = useContext(MyContext);
   const navigate = useNavigate();
 
@@ -79,16 +76,17 @@ export const AdminPage = () => {
                   <button onClick={() => {
                     // document.querySelector(".admin-page").classList.toggle("blurEffect");
                     setCurrentId(row.id);
-                    document.querySelector(".editDiv").classList.toggle("hide");
+                    setCurrentTitle(row.title);
+                    document.querySelector(".editDiv").classList.remove("hide");
                     // document.querySelector("body").classList.toggle("blurEffect");
                   }}>Edit</button>
                 </TableCell>
-                <EditProduct id={currentId} fetchProducts={fetchProducts} />
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <EditProduct id={currentId} title={currentTitle} fetchProducts={fetchProducts} />
     </div>
   )
 }
