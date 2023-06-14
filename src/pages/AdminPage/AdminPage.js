@@ -7,9 +7,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { MyContext } from '../../MyContext';
-import { GET_OR_DELETE_OR_EDIT_PRODUCT_BY_ID } from '../../constants/api';
-import EditProduct from '../../components/EditProduct/EditProduct';
+import { BASE_URL, GET_OR_DELETE_OR_EDIT_PRODUCT_BY_ID } from '../../constants/api';
 import AddProduct from '../../components/AddProduct/AddProduct';
+import { useNavigate } from 'react-router-dom';
+import "./AdminPage.css"
 
 
 function createData(title, description, price, category, image, rating, id) {
@@ -23,6 +24,7 @@ function createData(title, description, price, category, image, rating, id) {
 export const AdminPage = ({ fetchProducts }) => {
 
   const { products } = useContext(MyContext);
+  const navigate = useNavigate();
 
   const rows = [];
   products.map((p) => {
@@ -40,7 +42,7 @@ export const AdminPage = ({ fetchProducts }) => {
               <TableCell align="left">Description</TableCell>
               <TableCell align="right">Price&nbsp;($)</TableCell>
               <TableCell align="left">Category</TableCell>
-              <TableCell align="right">Image</TableCell>
+              <TableCell align="left">Image</TableCell>
               <TableCell align="left">Rating</TableCell>
               <TableCell align="left">Remove product</TableCell>
               {/* <TableCell align="left">Edit</TableCell> */}
@@ -52,13 +54,13 @@ export const AdminPage = ({ fetchProducts }) => {
                 key={row.title}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell component="th" scope="row">
+                <TableCell component="th" scope="row" onClick={() => navigate(`/product/${row.id}`)} className='hover'>
                   {row.title}
                 </TableCell>
                 <TableCell align="left">{row.description}</TableCell>
                 <TableCell align="right">{row.price}</TableCell>
                 <TableCell align="left">{row.category}</TableCell>
-                <TableCell align="right"><img src={row.image} width={80} height={80} /></TableCell>
+                <TableCell align="right"><img src={row.image} width={80} height={80} onClick={() => navigate(`/product/${row.id}`)} className='hover'/></TableCell>
                 <TableCell align="left">rate: {row.rating.rate} count: {row.rating.count}</TableCell>
                 <TableCell>
                   <button onClick={async () => {

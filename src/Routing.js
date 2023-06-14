@@ -8,7 +8,7 @@ import AdminPage from './pages/AdminPage/AdminPage';
 import CartPage from './pages/CartPage/CartPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
-import { BASE_URL } from './constants/api';
+import { BASE_URL, BASE_URL_API } from './constants/api';
 
 export const Routing = () => {
   const [categories, setCategories] = useState([]);
@@ -109,7 +109,7 @@ export const Routing = () => {
 
   return (
     <BrowserRouter>
-      <MyContext.Provider value={{ itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue, sortByValue, setItemsInCart, sortOptions, highestPrice, value, setValue, lowestPriceInRange, setLowestPriceInRange, highestPriceInRange, setHighestPriceInRange, isCartOpen, setIsCartOpen }}>
+      <MyContext.Provider value={{ fetchProducts, itemsInCart, setFilterByValue, setSortByValue, categories, incrementProduct, decrementProduct, addToCart, products, filterByValue, sortByValue, setItemsInCart, sortOptions, highestPrice, value, setValue, lowestPriceInRange, setLowestPriceInRange, highestPriceInRange, setHighestPriceInRange, isCartOpen, setIsCartOpen }}>
         <NavUnlisted>
           <NavLink to="/" activeClassName="current" exact><li>HomePage</li></NavLink>
           <NavLink to="about" activeClassName="current" exact><li>About</li></NavLink>
@@ -121,7 +121,7 @@ export const Routing = () => {
           <Route path="product/:id" element={<SingleProductPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="cart" element={<CartPage />} />
-          <Route path="admin" element={<AdminPage fetchProducts={fetchProducts}/>} />
+          <Route path="admin" element={<AdminPage />} />
           <Route path="*" element={<NotFoundPage />} />
           {/* <Route path="*" element={<Navigate to="/" replace />} />   */}
         </Routes>
