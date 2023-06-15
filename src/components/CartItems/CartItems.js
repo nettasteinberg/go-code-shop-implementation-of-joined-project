@@ -7,7 +7,7 @@ import { Button } from '../Button/Button';
 
 const CartItems = () => {
 
-  const {itemsInCart, setItemsInCart} = useContext(MyContext);
+  const {itemsInCart, setItemsInCart, setIsCartOpen} = useContext(MyContext);
     
     const removeFromCart = (id) => {
       console.log(id);
@@ -46,7 +46,7 @@ const CartItems = () => {
           </div>
           <div className="productProperty">
             <div>Cost:</div>
-            <div>{itemsInCart[id]["amount"] * itemsInCart[id]["price"]}</div>
+            <div>{(itemsInCart[id]["amount"] * itemsInCart[id]["price"]).toFixed(2)}</div>
           </div>
           <div className='changeAmount'>
             <div className="adjustAmountInCart">
@@ -61,12 +61,12 @@ const CartItems = () => {
           </div>
         </div>
       )}
-      <div className="productProperty itemInCart">
+      {Object.keys(itemsInCart).length > 0 ? <div className="productProperty itemInCart">
         <div>Total cost:</div>
         <div>
-          {totalCost}
+          {totalCost.toFixed(2)}
         </div>
-      </div>
+      </div> : setIsCartOpen(false)}
     </React.Fragment>
   )
 }
