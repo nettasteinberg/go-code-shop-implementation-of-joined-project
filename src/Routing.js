@@ -66,18 +66,18 @@ export const Routing = () => {
     setFunc((prev) => prev + 1);
   };
 
-  const decrementProduct = (setFunc) => {
-    setFunc((prev) => (prev === 0 ? prev : prev - 1));
+  const decrementProduct = (setFunc, limit) => {
+    setFunc((prev) => (prev + limit <= 0 ? prev : prev - 1));
   };
 
-  const addToCart = (id, productName, amount, price, setFunc) => {
+  const addToCart = (id, productName, price, image, amount, setFunc) => {
     if (amount === 0) {
       return;
     }
     if (id in itemsInCart) {
-      itemsInCart[productName]["amount"] += amount;
+      itemsInCart[id]["amount"] += amount;
     } else {
-      itemsInCart[id] = { "name": productName, "amount": amount, "price": price };
+      itemsInCart[id] = { "name": productName, "amount": amount, "price": price, "image": image };
       console.log(`added item: ${id}`, itemsInCart[id])
     }
     setItemsInCart({ ...itemsInCart });

@@ -5,11 +5,11 @@ import Typography from '@mui/material/Typography';
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../MyContext';
-import { Button } from '../Button/Button';
 import "./Product.css";
+import AddToCartButtons from '../AddToCartButtons/AddToCartButtons';
 
-export const Product = ({ src, title, price, id }) => {
-  const { incrementProduct, decrementProduct, addToCart } = useContext(MyContext);
+export const Product = ({ image, title, price, id }) => {
+  const { itemsInCart } = useContext(MyContext);
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ export const Product = ({ src, title, price, id }) => {
         alt={title}
         height="200"
         // width="240"
-        image={src}
+        image={image}
         gap="5"
         onClick={() => navigate(`product/${id}`)}
       />
@@ -32,14 +32,11 @@ export const Product = ({ src, title, price, id }) => {
           {price}$
         </Typography>
       </CardContent>
-      <CardActions className="addToCartContainer">
-        <Button onClick={() => decrementProduct(setCount)} text={"-"} />
-        <p>{count}</p>
-        <Button onClick={() => incrementProduct(setCount)} text={"+"} />
+      <CardActions >
+      <AddToCartButtons id={id} title={title} price={price} image={image} />
+        <div>Items in cart: {id in itemsInCart ? itemsInCart[id]["amount"] : 0}</div>
       </CardActions>
-      <CardActions>
-        <Button onClick={() => addToCart(id, title, count, price, setCount)} text={"ADD TO CART"} />
-      </CardActions>
+      
     </Card>
   );
 }
