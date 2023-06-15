@@ -62,7 +62,7 @@ export const AdminPage = () => {
                 <TableCell align="left">{row.description}</TableCell>
                 <TableCell align="right">{row.price}</TableCell>
                 <TableCell align="left">{row.category}</TableCell>
-                <TableCell align="left"><img src={row.image} width={80} height={80} onClick={() => navigate(`/product/${row.id}`)} className='hover' /></TableCell>
+                <TableCell align="left"><img src={row.image} alt="product" width={80} height={80} onClick={() => navigate(`/product/${row.id}`)} className='hover' /></TableCell>
                 <TableCell align="left">rate: {row.rating.rate} count: {row.rating.count}</TableCell>
                 <TableCell>
                   <button onClick={async () => {

@@ -21,7 +21,7 @@ export const Routing = () => {
   const [value, setValue] = useState([1, highestPrice]);
   const [lowestPriceInRange, setLowestPriceInRange] = useState(1);
   const [highestPriceInRange, setHighestPriceInRange] = useState(highestPrice);
-  const [isCartOpen, setIsCartOpen] = useState(false)
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const sortOptions = ["Alphabetically, A-Z", "Alphabetically, Z-A", "Price, low to high", "Price, high to low", "Rating"];
 

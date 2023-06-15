@@ -3,6 +3,7 @@ import "./AddOrEditProduct.css"
 import { BASE_URL, GET_OR_DELETE_OR_EDIT_PRODUCT_BY_ID } from '../../constants/api'
 
 const AddOrEditProduct = ({ edit, id, title, fetchProducts }) => {
+    console.log("In AddOrEditProduct, 'edit' value is", edit);
     return (
         <div className="editDiv hide">
             <p className='pEdit'>{edit ? "You can edit any and all of the following fields for product" : "To add a new product, please fill ALL the following fields"}</p>
@@ -10,23 +11,23 @@ const AddOrEditProduct = ({ edit, id, title, fetchProducts }) => {
             <div className="inputFields">
                 {!edit && <div className="inputDiv" >
                     <label>Title:</label>
-                    <input type="text" className='editTitle' defaultValue="Product" required/>
+                    <input type="text" className='editTitle' placeholder="Example: Teddy Bear" required/>
                 </div>}
                 {!edit && <div className="inputDiv">
                     <label>Category:</label>
-                    <input type="text" className='editCategory' defaultValue="Category" required />
+                    <input type="text" className='editCategory' placeholder="Example: Toys" required />
                 </div>}
                 <div className="inputDiv">
                     <label>Description:</label>
-                    <input type="text" className='editDescription' placeholder={edit ? 'Description' : false}  defaultValue={edit ? false : "Description"} required={!edit} />
+                    <input type="text" className='editDescription' placeholder="Example: A soft, light-brown teddy bear" required={!edit} />
                 </div>
                 <div className="inputDiv">
                     <label>Price:</label>
-                    <input type="number" className='editPrice' placeholder={edit ? 100 : false}  defaultValue={edit ? false : 100} required={!edit} />
+                    <input type="number" className='editPrice' placeholder="Example: 100" required={!edit} />
                 </div>
                 <div className="inputDiv">
                     <label>Image URL:</label>
-                    <input type="text" className='editImageUrl' placeholder={edit ? 'Image url' : false}  defaultValue={edit ? false : "https://i5.walmartimages.com/asr/683488a1-eff8-4a0e-b076-9bb782a16c14.60bbfc5d285269f3a12eeb9c85dae585.jpeg"} required={!edit} />
+                    <input type="text" className='editImageUrl' placeholder="Example: https://m.media-amazon.com/images/I/71qtAiNUCpL.jpg" required={!edit} />
                 </div>
             </div>
             <div className='buttons'>
