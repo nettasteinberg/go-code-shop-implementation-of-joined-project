@@ -2,7 +2,7 @@ import { CardActions, CardMedia } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../MyContext';
 import "./Product.css";
@@ -10,7 +10,6 @@ import AddToCartButtons from '../AddToCartButtons/AddToCartButtons';
 
 export const Product = ({ image, title, price, id }) => {
   const { itemsInCart } = useContext(MyContext);
-  const [count, setCount] = useState(0);
   const navigate = useNavigate();
 
   return (
@@ -19,7 +18,6 @@ export const Product = ({ image, title, price, id }) => {
         component="img"
         alt={title}
         height="200"
-        // width="240"
         image={image}
         gap="5"
         onClick={() => navigate(`product/${id}`)}

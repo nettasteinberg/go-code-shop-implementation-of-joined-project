@@ -26,9 +26,7 @@ export const AdminPage = () => {
   const navigate = useNavigate();
 
   const rows = [];
-  products.map((p) => {
-    rows.push(createData(p.title, p.description, p.price, p.category, p.image, p.rating, p._id))
-  });
+  products.map((p) => rows.push(createData(p.title, p.description, p.price, p.category, p.image, p.rating, p._id)));
 
   return (
     <div className='admin-page'>
@@ -69,6 +67,7 @@ export const AdminPage = () => {
                     try {
                       const response = await fetch(`${GET_OR_DELETE_OR_EDIT_PRODUCT_BY_ID}${row.id}`, { method: 'DELETE' });
                       const data = await response.json();
+                      console.log(data);
                       fetchProducts();
                     } catch (e) {
                       console.log(e.message);

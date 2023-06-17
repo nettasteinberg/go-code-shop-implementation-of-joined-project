@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { MyContext } from '../../MyContext'
 import "./CartItems.css"
-import AddToCartButtons from '../AddToCartButtons/AddToCartButtons';
 import { Button } from '../Button/Button';
 
 
@@ -39,7 +38,7 @@ const CartItems = () => {
     <React.Fragment>
       {Object.keys(itemsInCart).map(id =>
         <div className='itemInCart'>
-          <img src={itemsInCart[id]["image"]} width={200} height={200} />
+          <img src={itemsInCart[id]["image"]} alt="product" width={200} height={200} />
           <div className="productProperty">
             <div>Amount:</div>
             <div>{itemsInCart[id]["amount"]}</div>
