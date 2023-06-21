@@ -66,7 +66,7 @@ export const Routing = () => {
   };
 
   const decrementProduct = (setFunc, limit) => {
-    setFunc((prev) => (prev + limit <= 1 ? prev : prev - 1));
+    setFunc((prev) => (prev + limit <= 0 ? prev : prev - 1));
   };
 
   const addToCart = (id, productName, price, image, amount, setFunc) => {

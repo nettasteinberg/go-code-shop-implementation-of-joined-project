@@ -8,7 +8,7 @@
 
 .changAmount {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     flex-direction: row;
     width: 100%;
@@ -18,18 +18,42 @@
 .addToCart {
     display: flex;
     justify-content: center;
+    gap: 5px;
+}
+
+.removeFromCart {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
 }
 
 .button {
-    min-width: 122px; 
+    min-width: 122px;
 }
 
-.plus {
+.plusInProduct {
     background-color: #dd6e6e;
+    /* background-color: transparent; */
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
-.minus {
+.minusInProduct {
     background-color: #53d4ff;
+    /* background-color: transparent; */
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 
 .add {
@@ -38,4 +62,13 @@
 
 .remove {
     background-color: #e0b0ff;
+}
+
+.hover {
+    cursor: pointer;
+}
+
+.size {
+    height: 24px;
+    width: 24px;
 }

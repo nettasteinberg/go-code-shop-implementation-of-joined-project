@@ -27,11 +27,11 @@
     min-width: 33px;
 }
 
-.plus {
+.plusButtonInItemsInCart {
     background-color: #dd6e6e;
 }
 
-.minus {
+.minusButtonInItemsInCart {
     background-color: #53d4ff;
 }
 
